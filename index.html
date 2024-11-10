@@ -54,10 +54,17 @@
                                 <!-- heading end  -->
                             </div>
                             <div class="col-xl-7 col-lg-7">
-                                <!-- countdown start  -->
-                                <div class="wow fadeInRight" data-wow-delay=".4s" data-countdown="2021/10/01"></div>
-                                <!-- countdown end  -->
-                            </div>
+    <!-- countdown start -->
+    <div class="wow fadeInRight" data-wow-delay=".4s" data-countdown="">
+        <script>
+            // Calcul de la date à 60 jours à partir de maintenant
+            const countdownDate = new Date();
+            countdownDate.setDate(countdownDate.getDate() + 60);
+            document.querySelector('[data-countdown]').setAttribute('data-countdown', countdownDate.toISOString().split('T')[0]);
+        </script>
+    </div>
+    <!-- countdown end -->
+</div>
                             <div class="col-xl-5 col-lg-5">
                                 <!-- desc strat  -->
                                 <p class="wow fadeInLeft" data-wow-delay=".4s">We're strong believers that the best solutions come from gathering new insights and pushing conventional boundaries.</p>
