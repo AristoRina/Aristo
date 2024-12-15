@@ -57,11 +57,22 @@
     <!-- countdown start -->
     <div class="wow fadeInRight" data-wow-delay=".4s" data-countdown="">
         <script>
-            // Calcul de la date à 60 jours à partir de maintenant
-            const countdownDate = new Date();
-            countdownDate.setDate(countdownDate.getDate() + 90);
-            document.querySelector('[data-countdown]').setAttribute('data-countdown', countdownDate.toISOString().split('T')[0]);
-        </script>
+    // Vérifier si une date de compte à rebours existe déjà dans le stockage local
+    let countdownDate = localStorage.getItem('countdownDate');
+
+    if (!countdownDate) {
+        // Si aucune date n'est trouvée, calculer une nouvelle date à 60 jours à partir d'aujourd'hui
+        const now = new Date();
+        now.setDate(now.getDate() + 60);
+        countdownDate = now.toISOString().split('T')[0];
+        
+        // Sauvegarder cette date dans le stockage local
+        localStorage.setItem('countdownDate', countdownDate);
+    }
+
+    // Mettre à jour l'attribut data-countdown avec la date cible
+    document.querySelector('[data-countdown]').setAttribute('data-countdown', countdownDate);
+</script>
     </div>
     <!-- countdown end -->
 </div>
